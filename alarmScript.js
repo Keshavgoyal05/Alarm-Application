@@ -25,8 +25,9 @@ function addZero(time) {
     return (time < 10) ? "0" + time : time;
 }
     
-function hoursMenu(){
+function hoursMenu(index){
     var select = document.getElementById('alarmhrs');
+    select.setAttribute("id","alarmhrs"+index);
     var hrs = 12
     for (i=1; i <= hrs; i++) {
         select.options[select.options.length] = new Option( i < 10 ? "0" + i : i, i);
@@ -34,8 +35,9 @@ function hoursMenu(){
 }
 
     
-function minMenu(){    
+function minMenu(index){    
     var select = document.getElementById('alarmmins');
+    select.setAttribute("id","alarmmins"+index);
     var min = 59;
     for (i=0; i <= min; i++) {
         select.options[select.options.length] = new Option(i < 10 ? "0" + i : i, i);
@@ -43,30 +45,36 @@ function minMenu(){
 }
 
     
-function secMenu(){    
+function secMenu(index){    
     var select = document.getElementById('alarmsecs');
+    select.setAttribute("id","alarmsecs"+index);
     var sec = 59;
     for (i=0; i <= sec; i++) {
         select.options[select.options.length] = new Option(i < 10 ? "0" + i : i, i);
     }
 }
 
+function ampmMenu(index){    
+    var select = document.getElementById('alarmampm');
+    select.setAttribute("id","alarmampm"+index);
+}
 
-function alarmSet() {
-    var hr = document.getElementById('alarmhrs');
-    var min = document.getElementById('alarmmins');
-    var sec = document.getElementById('alarmsecs');
-    var ap = document.getElementById('ampm');
+function alarmSet(obj) {
+    var index = obj.parentNode.parentNode.rowIndex;
+    var hr = document.getElementById('alarmhrs'+index);
+    var min = document.getElementById('alarmmins'+index);
+    var sec = document.getElementById('alarmsecs'+index);
+    var ap = document.getElementById('alarmampm'+index);
     var selectedHour = hr.options[hr.selectedIndex].value;
     var selectedMin = min.options[min.selectedIndex].value;
     var selectedSec = sec.options[sec.selectedIndex].value;
     var selectedAP = ap.options[ap.selectedIndex].value;
     var alarmTime = addZero(selectedHour) + ":" + addZero(selectedMin) + ":" + addZero(selectedSec) + selectedAP;
     console.log('alarmTime:' + alarmTime);
-    document.getElementById('alarmhrs').disabled = true;
-    document.getElementById('alarmmins').disabled = true;
-    document.getElementById('alarmsecs').disabled = true;
-    document.getElementById('ampm').disabled = true;
+    document.getElementById('alarmhrs'+index).disabled = true;
+    document.getElementById('alarmmins'+index).disabled = true;
+    document.getElementById('alarmsecs'+index).disabled = true;
+    document.getElementById('alarmampm'+index).disabled = true;
     var h2 = document.getElementById('clock');
     
     //function to calcutate the current time 
@@ -95,27 +103,32 @@ function alarmSet() {
     //console.log('currentTime:' + currentTime);	
 }
 
-function alarmClear() {    
-    document.getElementById('alarmhrs').disabled = false;
-    document.getElementById('alarmmins').disabled = false;
-    document.getElementById('alarmsecs').disabled = false;
-    document.getElementById('ampm').disabled = false;
+function alarmClear(obj) { 
+    var index = obj.parentNode.parentNode.rowIndex;   
+    document.getElementById('alarmhrs'+index).disabled = false;
+    document.getElementById('alarmmins'+index).disabled = false;
+    document.getElementById('alarmsecs'+index).disabled = false;
+    document.getElementById('alarmampm'+index).disabled = false;
     sound.pause();
 }
     
     
 function AddAlarm(){
+    
     var table=document.getElementById("mytable");
     var tr=document.createElement('TR');
     table.appendChild(tr);
+    var index = tr.rowIndex;
     var td=document.createElement('TD');
-    td.innerHTML='<select id="alarmhrs"></select>&nbsp;<select id="alarmmins"></select>&nbsp;<select id="alarmsecs"></select>&nbsp;<select id="ampm"><option value="AM">AM</option><option value="PM">PM</option></select>';
-    console.log("hi")
+    td.innerHTML='<select id="alarmhrs"></select>&nbsp;<select id="alarmmins"></select>&nbsp;<select id="alarmsecs"></select>&nbsp;<select id="alarmampm"><option value="AM">AM</option><option value="PM">PM</option></select>';
     tr.appendChild(td);
     var td=document.createElement('TD');
-    td.innerHTML='<button id="setButton" class="btn btn-primary btn-sm" onClick="alarmSet()">Set Alarm</button>&nbsp;<button id="clearButton" onClick="alarmClear()" class="btn btn-danger btn-sm">Clear Alarm</button>&nbsp;';
+    td.innerHTML='<button id="setButton" class="btn btn-primary btn-sm" onClick="alarmSet(this)">Set Alarm</button>&nbsp;<button id="clearButton" onClick="alarmClear(this)" class="btn btn-danger btn-sm">Clear Alarm</button>&nbsp;';
     td.innerHTML+='<a onClick="DeleteAlarm(this)" style="color: black;" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span>&nbsp;<b>Delete</b></a>';
     tr.appendChild(td);
+
+    
+    hoursMenu(index);minMenu(index);secMenu(index);ampmMenu(index);
 } 
 
 function DeleteAlarm(obj){
