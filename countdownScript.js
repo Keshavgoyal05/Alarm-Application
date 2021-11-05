@@ -36,7 +36,7 @@ function DisplayCurrentTime() {
     var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
     var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
     time = hours + ":" + minutes + ":" + seconds + " " + am_pm;
-    document.getElementById("result").innerHTML="<b>Your Countdown has expired at"+ today + " " + time + ".</b>";
+    document.getElementById("result").innerHTML="<b>Your Countdown has expired at "+ today + " " + time + ".</b>";
 };
 
 
