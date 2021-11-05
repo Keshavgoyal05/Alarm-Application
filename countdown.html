@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Alarm Application</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body >
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">MY ALARM</a>
+              </div>
+              <ul class="nav navbar-nav navbar-center" >
+                <li><a href="index.html"><span class="glyphicon glyphicon-time"></span> Alarm</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-play-circle"></span> Countdown Timer</a></li>
+              </ul>
+            </div>
+        </nav> <br><br><br>
+        <center>
+                <select id="hrs"></select>&nbsp;
+                <select id="mins"></select>&nbsp;
+                <select id="secs"></select>&nbsp;
+                <button  id="countdown" class="btn btn-success btn-sm" onClick="CountDown()">GO</button>
+        </center>
+        <br>
+        <center>
+            <div id="clockdiv">
+                <div>
+                  <span class="hours"></span>
+                  <div class="smalltext">Hours</div>
+                </div>
+                <div>
+                  <span class="minutes"></span>
+                  <div class="smalltext">Minutes</div>
+                </div>
+                <div>
+                  <span class="seconds"></span>
+                  <div class="smalltext">Seconds</div>
+                </div>
+            </div>
+            <br><br>
+            <div id="result" style="color: brown;">
+            </div>
+        </center>
+        
+        <script src="countdownScript.js"></script>
+    </body>
+</html>

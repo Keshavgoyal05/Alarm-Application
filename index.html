@@ -1,0 +1,40 @@
+<html>
+    <head>
+
+        <title>Alarm Application</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body >
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">MY ALARM</a>
+              </div>
+              <ul class="nav navbar-nav navbar-center" >
+                <li><a href="#"><span class="glyphicon glyphicon-time"></span> Alarm</a></li>
+                <li><a href="countdown.html"><span class="glyphicon glyphicon-play-circle"></span> Countdown Timer</a></li>
+              </ul>
+            </div>
+        </nav> <br><br><br>
+        <center><h3 id="clock" class="clock"></h3></center>
+        <div id="main" class="container">
+        
+            <table id="mytable"
+            
+            class="table table-striped">
+
+            </table>
+        </div>
+        <div id="last" style="position:fixed;bottom: 20px;right: 40px;">
+            <a onclick="AddAlarm();hoursMenu();minMenu();secMenu();" style="color: black;font-size: 20px;" class="btn btn-sm"><span class="glyphicon glyphicon-plus" style="font-size: 20px;"></span><b> Add Alarm</b></a>
+        </div>
+        <script src="alarmScript.js"></script>
+    </body>
+</html>
