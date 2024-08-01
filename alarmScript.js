@@ -7,7 +7,7 @@ sound.loop = true;
 var clock = document.getElementById('clock');
 var currentTime = setInterval(function(){
         var date = new Date();
-        var hours = (12 - (date.getHours()));
+        var hours = date.getHours();
         var minutes = date.getMinutes();
         var seconds = date.getSeconds();
         var ampm = (date.getHours()) < 12 ? 'AM' : 'PM';
@@ -82,7 +82,7 @@ function alarmSet(obj) {
 
     setInterval(function(){
         var date = new Date();
-        var hours = (12 - (date.getHours()));
+        var hours = date.getHours();
         // var hours = date.getHours();
         var minutes = date.getMinutes();
         var seconds = date.getSeconds();
